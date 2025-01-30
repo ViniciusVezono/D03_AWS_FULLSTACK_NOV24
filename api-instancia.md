@@ -65,10 +65,52 @@
 
 Próximo passo: **Configurando a API**
 
-1. Execute o comando para atualizar o sistema
+### Execute o comando para atualizar o sistema
    
    ```
    sudo apt update && sudo apt upgrade -y
    ```
 
-2. 
+### Execute o comando para instalar o Docker 
+   ```
+   sudo snap install docker
+   ```
+
+### Execute o comando para gerar uma chave SSH e colocar ele no github
+
+   ```
+   ssh-keygen -t rsa
+   cat ~/.ssh/id_rsa.pub
+   ```
+
+### Adicione a chave SSH ao seu repositório no GitHub.
+- Clique em **Settings**.
+- Clique em **SSH and GPG keys**.
+- Clique em **New SSH key**.
+- Coloque um nome para a chave.
+- Cole a chave SSH gerada anteriormente.
+- Clique em **Add SSH key**.
+
+### Volte para o terminal e execute o seguinte comando para clonar o repositório 
+    ```
+   git clone https://github.com/ViniciusVezono/D03_AWS_FULLSTACK_NOV24.git
+   ```
+
+### Execute o comando para entrar na pasta do projeto
+   ```
+   cd D03_AWS_FULLSTACK_NOV24
+
+   ```
+### Execute o comando para entrar na pasta da API 
+   ```
+   cd GreenSphere-api
+   ```
+
+### Execute o comando para inicializar o container da api 
+   ```
+   sudo docker-compose up -d api
+   ```
+
+# Pronto! Agora a instancia da api está inicializada e conecatada na AWS
+
+
