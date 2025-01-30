@@ -92,14 +92,13 @@ Próximo passo: **Configurando a API**
 - Clique em **Add SSH key**.
 
 ### Volte para o terminal e execute o seguinte comando para clonar o repositório 
-    ```
+   ```
    git clone https://github.com/ViniciusVezono/D03_AWS_FULLSTACK_NOV24.git
    ```
 
 ### Execute o comando para entrar na pasta do projeto
    ```
    cd D03_AWS_FULLSTACK_NOV24
-
    ```
 ### Execute o comando para entrar na pasta da API 
    ```
