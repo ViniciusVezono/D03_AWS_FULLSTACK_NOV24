@@ -61,9 +61,7 @@
 
 3. Agora você está conectado à sua instância EC2!
 
----
-
-## 1. Configurando a API
+## Configurando o banco de dados
 
 ### Execute o comando para atualizar o sistema
    
@@ -107,9 +105,6 @@
 
 ### Execute o comando para inicializar o container da api 
    ```
-   sudo docker-compose up -d api
+   sudo docker-compose up -d postgres
    ```
-
-# Pronto! Agora a instancia da api está inicializada e conecatada na AWS
-
 
