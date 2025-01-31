@@ -4,7 +4,7 @@
 
 ### Passo 1: Acesse o diretório do projeto e instale as dependências 
     
-   ```sh
+   ```
    cd GreenSphere-web
     npm install
    ```
