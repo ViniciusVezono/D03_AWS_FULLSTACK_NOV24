@@ -3,7 +3,6 @@
 ## Configurar build do projeto
 
 ### Passo 1: Acesse o diretório do projeto e instale as dependências 
-    
    ```
    cd GreenSphere-web
     npm install
