@@ -3,15 +3,15 @@
 ## Configurar build do projeto
 
 ### Passo 1: Acesse o diretório do projeto e instale as dependências 
-   ```
-   cd GreenSphere-web
+    ```
+    cd GreenSphere-web
     npm install
-   ```
+    ```
 
 ### Passo 2: Construir o projeto
     ```
     npm run build
-   ``` 
+    ``` 
 
 ## Criação do bucket no S3 
 
