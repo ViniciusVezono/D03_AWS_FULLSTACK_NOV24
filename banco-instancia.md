@@ -63,25 +63,25 @@
 
 ## Configurando o banco de dados
 
-### Execute o comando para atualizar o sistema
+### Passo 1: Execute o comando para atualizar o sistema
    
    ```
    sudo apt update && sudo apt upgrade -y
    ```
 
-### Execute o comando para instalar o Docker 
+### Passo 2: Execute o comando para instalar o Docker 
    ```
    sudo snap install docker
    ```
 
-### Execute o comando para gerar uma chave SSH e colocar ele no github
+### Passo 3: Execute o comando para gerar uma chave SSH e colocar ele no github
 
    ```
    ssh-keygen -t rsa
    cat ~/.ssh/id_rsa.pub
    ```
 
-### Adicione a chave SSH ao seu repositório no GitHub.
+### Passo 4: Adicione a chave SSH ao seu repositório no GitHub.
 - Clique em **Settings**.
 - Clique em **SSH and GPG keys**.
 - Clique em **New SSH key**.
@@ -89,21 +89,21 @@
 - Cole a chave SSH gerada anteriormente.
 - Clique em **Add SSH key**.
 
-### Volte para o terminal e execute o seguinte comando para clonar o repositório 
+### Passo 5: Volte para o terminal e execute o seguinte comando para clonar o repositório 
    ```
    git clone https://github.com/ViniciusVezono/D03_AWS_FULLSTACK_NOV24.git
    ```
 
-### Execute o comando para entrar na pasta do projeto
+### Passo 6: Execute o comando para entrar na pasta do projeto
    ```
    cd D03_AWS_FULLSTACK_NOV24
    ```
-### Execute o comando para entrar na pasta da API 
+### Passo 7: Execute o comando para entrar na pasta da API 
    ```
    cd GreenSphere-api
    ```
 
-### Execute o comando para inicializar o container da api 
+### Passo 8: Execute o comando para inicializar o container da api 
    ```
    sudo docker-compose up -d postgres
    ```
