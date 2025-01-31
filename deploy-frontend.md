@@ -10,8 +10,8 @@
    ```
 
 ### Passo 2: Construir o projeto
-    ```sh
-   npm run build
+    ```
+    npm run build
    ``` 
 
 ## Criação do bucket no S3 
