@@ -2,114 +2,102 @@
 
 ## 1. Criando a Instância EC2
 
-### Passo 1: Acesse o Console da AWS
+### Passo 1: Criar uma VPC
+1. No menu de pesquisa do console AWS, procure por **VPC**.
+2. Clique em **Criar VPC** e selecione a opção **VPC e muito mais**.
+3. Digite um nome para a sua VPC.
+4. No final da tela, clique em **Criar VPC**.
 
-1. Vá para o [AWS Management Console](https://aws.amazon.com/console/).
-2. No menu de serviços, selecione **EC2**.
-3. Clique em **Executar Instância**.
+### Passo 2: Criar um Grupo de Segurança
+1. No menu de pesquisa, procure por **Grupo de Segurança**.
+2. Clique em **Criar grupo de segurança**.
+3. Defina um nome e selecione a VPC criada anteriormente.
+4. No final da tela, clique em **Criar grupo de segurança**.
 
-### Passo 2: Escolha a Imagem da Máquina (AMI)
+### Passo 3: Criar a Instância EC2
+1. No [AWS Management Console](https://aws.amazon.com/console/), selecione **EC2**.
+2. Clique em **Executar Instância**.
+3. Escolha a AMI **Ubuntu Server 22.04 LTS** (ou versão mais recente estável).
+4. Escolha o tipo da instância:
+   - **t2.micro** (1 vCPU, 1GB RAM) para desenvolvimento/teste (grátis para contas elegíveis).
+   - Para produção, escolha conforme a necessidade.
 
-1. Selecione **Ubuntu Server 22.04 LTS** (ou a versão mais recente estável para sua aplicação).
-2. Clique em **Selecionar**.
-
-### Passo 3: Escolha o Tipo da Instância
-
-1. Para um ambiente de desenvolvimento/teste, escolha **t2.micro** (1 vCPU, 1GB RAM - gratuito para contas elegíveis).
-2. Para produção, selecione um tipo adequado conforme a necessidade.
-
-### Passo 4: Configurar Detalhes da Instância
-
-1. Deixe as configurações padrão ou ajuste conforme necessário.
-2. Em **Número de instâncias**, deixe **1**.
-3. Em **Configuração de Rede**, escolha uma VPC existente ou crie uma nova.
-4. Se necessário, habilite um **IP público** para acesso remoto.
+### Passo 4: Configurar a Rede
+1. Selecione a VPC criada anteriormente.
+2. Escolha a sub-rede com **public** no nome, exemplo: `{nome da sua VPC}-subnet-public`.
+3. Habilite **Atribuir IP público**.
+4. Selecione **Selecionar grupo existente** e escolha o grupo de segurança criado anteriormente.
 
 ### Passo 5: Adicionar Armazenamento
-
 1. O padrão é **8GB** de SSD (EBS), ajuste conforme necessário.
 2. Clique em **Avançar**.
 
-### Passo 6: Configurar Segurança (Security Groups)
-
-1. Crie um novo Security Group ou use um existente.
-2. Adicione regras para permitir o tráfego:
-   - **HTTP (porta 80)** - Para acessar a API via navegador
-   - **HTTPS (porta 443)** - Se for usar SSL
-   - **SSH (porta 22)** - Para conexão via terminal (apenas seu IP recomendado)
-   - **Custom TCP (porta 3000 ou outra usada pela API)**
-3. Clique em **Avançar**.
-
-### Passo 7: Criar e Associar Chave SSH
-
-1. Escolha "Criar novo par de chaves" ou use um existente.
+### Passo 6: Criar e Associar Chave SSH
+1. Escolha **Criar novo par de chaves** ou use um existente.
 2. Baixe o arquivo `.pem` e guarde-o em um local seguro.
 3. Clique em **Executar Instância**.
 
+---
+
 ## 2. Conectando-se à Instância via SSH
-
-1. No terminal, vá até a pasta onde está sua chave SSH.
-
-2. Execute o comando:
-
+1. No terminal, navegue até a pasta onde está sua chave SSH.
+2. Execute:
    ```sh
    ssh -i "seu-arquivo.pem" ubuntu@seu-ip-publico
    ```
-
    - Substitua `seu-arquivo.pem` pelo caminho correto do arquivo.
    - Substitua `seu-ip-publico` pelo IP da sua instância.
 
-3. Agora você está conectado à sua instância EC2!
+---
+
+## 3. Configurando o Ambiente
+
+### Passo 1: Atualizar o sistema
+```sh
+sudo apt update && sudo apt upgrade -y
+```
+
+### Passo 2: Instalar o Docker
+```sh
+sudo apt install -y docker.io
+sudo systemctl enable docker
+sudo systemctl start docker
+```
+
+### Passo 3: Configurar chave SSH para acesso ao GitHub
+```sh
+ssh-keygen -t rsa -b 4096 -C "seu-email@example.com"
+cat ~/.ssh/id_rsa.pub
+```
+
+### Passo 4: Adicionar a chave SSH ao GitHub
+1. Acesse **GitHub > Settings**.
+2. Clique em **SSH and GPG keys**.
+3. Clique em **New SSH key**.
+4. Nomeie a chave e cole a chave gerada.
+5. Clique em **Add SSH key**.
+
+### Passo 5: Clonar o repositório do projeto
+```sh
+git clone git@github.com:ViniciusVezono/D03_AWS_FULLSTACK_NOV24.git
+```
+
+### Passo 6: Entrar na pasta do projeto
+```sh
+cd D03_AWS_FULLSTACK_NOV24
+```
+
+### Passo 7: Entrar na pasta da API
+```sh
+cd GreenSphere-api
+```
+
+### Passo 8: Inicializar o container da API
+```sh
+sudo docker-compose up -d api
+```
 
 ---
 
-## 1. Configurando a API
-
-### Execute o comando para atualizar o sistema
-   
-   ```
-   sudo apt update && sudo apt upgrade -y
-   ```
-
-### Execute o comando para instalar o Docker 
-   ```
-   sudo snap install docker
-   ```
-
-### Execute o comando para gerar uma chave SSH e colocar ele no github
-
-   ```
-   ssh-keygen -t rsa
-   cat ~/.ssh/id_rsa.pub
-   ```
-
-### Adicione a chave SSH ao seu repositório no GitHub.
-- Clique em **Settings**.
-- Clique em **SSH and GPG keys**.
-- Clique em **New SSH key**.
-- Coloque um nome para a chave.
-- Cole a chave SSH gerada anteriormente.
-- Clique em **Add SSH key**.
-
-### Volte para o terminal e execute o seguinte comando para clonar o repositório 
-   ```
-   git clone https://github.com/ViniciusVezono/D03_AWS_FULLSTACK_NOV24.git
-   ```
-
-### Execute o comando para entrar na pasta do projeto
-   ```
-   cd D03_AWS_FULLSTACK_NOV24
-   ```
-### Execute o comando para entrar na pasta da API 
-   ```
-   cd GreenSphere-api
-   ```
-
-### Execute o comando para inicializar o container da api 
-   ```
-   sudo docker-compose up -d api
-   ```
-
-# Pronto! Agora a instancia da api está inicializada e conecatada na AWS
-
+## Agora sua API está rodando na instância EC2 da AWS!
 
