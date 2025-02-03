@@ -50,7 +50,7 @@
 3. Selecione a opção de "Habilitar" na opção de Atribuir o IP público
 4. Selecione a opção  "Selecionar grupo existente"
 5. Selecione o grupo de segurança que foi criado anteriormente
-[imagem_config](imagens\print11_s3.png)
+![imagem_config](./imagens/print11_s3.png)
 
 ### Passo 8: Adicionar Armazenamento
 

@@ -54,7 +54,9 @@ npm run build
        }
    ]    
    ```
-[imagem_CORS](./imagens/print6_s3.png)
+
+
+![imagem_CORS](./imagens/print6_s3.png)
 
 ### Passo 4: Configurar a Política do Bucket
 
@@ -75,7 +77,7 @@ npm run build
        ]
    }
    ```
-[imagem_bucket](./imagens/print5_s3.png)
+![imagem_bucket](./imagens/print5_s3.png)
 4. Clique em **Salvar alterações**.
 
 ### Passo 5: Adicionar a Build do Projeto ao Bucket
@@ -84,11 +86,11 @@ npm run build
 2. Clique na opção **Carregar**.
 3. Clique em **Adicionar arquivos**.
 4. Navegue até a pasta `dist` gerada pelo build do projeto.
-[imagem_pasta](./imagens/print3_s3.jpeg)
+![imagem_pasta](./imagens/print3_s3.jpeg)
 5. Selecione os arquivos disponíveis.
 6. Clique em **Adicionar pasta** e selecione a pasta `assets` da build.
 7. Após selecionar os arquivos e a pasta, clique em **Carregar**.
 
 ### O Bucket foi criado e está pronto para ser acessado! 🚀
-[imagem_link](./imagens/print7_s3.png)
+![imagem_link](./imagens/print7_s3.png)
 
