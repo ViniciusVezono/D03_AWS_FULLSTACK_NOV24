@@ -1,6 +1,6 @@
 # Nome: Vinícius Andrade Vezono 
 
-***Host da Aplicação: [Aplicação](http://greensphere-aws.s3-website.us-east-2.amazonaws.com)**
+***Host da Aplicação: [Aplicação](http://bucket-greensphere.s3-website.us-east-2.amazonaws.com )**
 
 ## Passo 1: Fazer o login da aplicação 
 1. Clique em login e vai aparecer as opções de login do clerk 
